@@ -69,15 +69,16 @@ public class SecurityConfig {
 	@Bean 
 	public RegisteredClientRepository registeredClientRepository() {
 		RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-				.clientId("api-client") // Client ID là ID của Máy Chủ Client dùng để xác thực với Authorization Server
+				.clientId("messaging-client") // Client ID là ID của Máy Chủ Client dùng để xác thực với Authorization Server
 				.clientSecret(passwordEncoder.encode("secret")) // Client Secret là khóa bí mật của Client dùng để xác thực với Authorization Server
  				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)// Phương thức xác thực Client 
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE) // Cho phép sử dụng Authorization Code Grant
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN) // Cho phép sử dụng Refresh Token
 				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS) // Cho phép sử dụng Client Credentials Grant
-				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/api-client-oidc") // Địa chỉ của Client để nhận Authorization Code
+				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc") // Địa chỉ của Client để nhận Authorization Code
 				.redirectUri("http://127.0.0.1:8080/authorized")   // Địa chỉ của Client để nhận Access Token
 				.scope(OidcScopes.OPENID) // Yêu cầu Client cung cấp thông tin OpenID
+				// .scope(OidcScopes.PROFILE) // Yêu cầu Client cung cấp thông tin Profile
 				.scope("message.read") // Những phạm vi mà Client được phép sử dụng để truy cập vào Resource Server, ở đây là được phép chỉ đọc dữ liệu từ Resource Server
 				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build()) // Yêu cầu Client phải xác nhận trước khi được cấp quyền truy cập vào Resource Server
 				.build();
