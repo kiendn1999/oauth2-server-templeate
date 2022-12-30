@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Oauth2ServerTempleateApplication<oauth2-server-templeate>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.oauth2servertempleate.Oauth2ServerTempleateApplication",
+            "projectName": "oauth2-server-templeate",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

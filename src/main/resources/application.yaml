@@ -1,0 +1,13 @@
+
+
+server:
+  port: 9000 # Đây là port mặc định của Server khi được chạy
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_registration # Đây là đường dẫn đến database ở local với tên database là user_registration
+    username: root # Đây là tên đăng nhập của database
+    password: aA01202702030 # Đây là mật khẩu của database
+    driver-class-name: com.mysql.cj.jdbc.Driver # Đây là driver của database
+  jpa:
+    show-sql: true # Đây là cấu hình để hiển thị câu lệnh SQL được tạo ra bởi Hibernate
